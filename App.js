@@ -14,10 +14,13 @@ function calcular(){
     const ops = []
 
     for(let i = 0; i < numeros.length; i++){
+      if(numeros[i] === "")
+        numeros.splice(i, 1)
       if(i % 2 === 0)
         nums.push(parseFloat(numeros[i]))
       else
         ops.push(numeros[i])
+      
     }
 
     let indexNums = 1, indexOps = 0, resultado = nums[0]
@@ -77,7 +80,8 @@ function calcular(){
         break;
       case "/":
       case "*":
-        setNumAtual(numAtual + " " + botao + " ")
+        if(numAtual.length !== 0)
+          setNumAtual(numAtual + " " + botao + " ")
 
       break;
       case "DEL":
@@ -131,5 +135,3 @@ function calcular(){
     </SafeAreaView>
   );
 }
-
-
